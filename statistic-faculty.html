@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
+<head>  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- External CSS Stylesheet -->
-  <link rel="stylesheet" href="/CSS/design.css">
+  <!-- External CSS Stylesheet -->  <link rel="stylesheet" href="/CSS/design.css">
   <link rel="stylesheet" href="/CSS/responsive.css">
-  <link rel='stylesheet' href='/CSS/logout.css' >
+  <link rel='stylesheet' href='/CSS/logout.css'>
+  <link rel='stylesheet' href='/CSS/statistic-dashboard.css'>
+  <link rel='stylesheet' href='/CSS/dashboard-filters.css'>
   <!-- Boxicons Icon Library -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-  <title>Gordon College - Dashboard</title>
+  <title>Gordon College - Statistics Dashboard</title>
 </head>
 
 
@@ -76,9 +77,12 @@
           <i class='bx bxs-group'></i>
           <span class="sidebar__text">BORROW STATUS</span>
         </a>
-      </li>
+      </li>    </ul>
+    
+    <!-- Dark Mode Toggle -->
+        <input type="hidden" id="theme-switch">
 
-    </ul>
+    
     <!-- Logout Option -->
     <ul class="sidebar__menu sidebar__menu--bottom">
       <li class="sidebar__item logout-button">
@@ -108,13 +112,15 @@
     </div>
   </nav>
   <!-- End of Top Navigation Bar -->
-
-
     <!-- ===================================
       Main Content Container
      =================================== -->
   <section class="dashboard">
-
+    <!-- The dashboard will be populated by statistic-faculty.js -->
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading statistics...</p>
+    </div>
   </section>
   
 </main>
@@ -128,9 +134,8 @@
 <!-- Firebase google fetching -->
 <script type="module" src="/backend/update.js"></script>
 
-<!-- Firebase JS -->
-<!-- <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script> -->
-<!-- <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script> -->
+<!-- Statistics Dashboard Script -->
+<script type="module" src="/backend/statistic-faculty.js"></script>
 </body>
 
 </html>

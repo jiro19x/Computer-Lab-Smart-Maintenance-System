@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="/CSS/design.css">
     <link rel="stylesheet" href="/CSS/responsive.css">
     <link rel='stylesheet' href='/CSS/logout.css'>
+
+      <link rel='stylesheet' href='/CSS/statistic-dashboard.css'>
+  <link rel='stylesheet' href='/CSS/dashboard-filters.css'>
+
+    <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Boxicons Icon Library -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -79,6 +86,8 @@
                     <span class="sidebar__text">REQUEST STATUS</span>
                 </a>
             </li>
+                <!-- Dark Mode Toggle -->
+        <input type="hidden" id="theme-switch">
 
             <li class="sidebar__item ">
                 <a href="borrow-status-admin-iverson.html" class="sidebar__link">
@@ -121,11 +130,13 @@
         <!-- ===================================
       Main Content Container
      =================================== -->
-        <section class="dashboard">
-
-
-
-        </section>
+  <section class="dashboard">
+    <!-- The dashboard will be populated by statistic-faculty.js -->
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading statistics...</p>
+    </div>
+  </section>
 
     </main>
     <!-- End of MAIN CONTENT AREA -->
@@ -136,6 +147,7 @@
 
     <!-- Firebase google fetching -->
     <script type="module" src="/backend/update.js"></script>
+        <script type="module" src="/backend/statistic-faculty.js"></script>
 
 
     <!-- Firebase JS -->
