@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Boxicons Icon Library -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="/CSS/report-dashboard-faculty.css"> <!--for the report components-->
-  <link href='/CSS/reportForm.css' rel='stylesheet'>    <!-- External CSS Stylesheet -->
+  <!-- External CSS Stylesheet -->
   <link rel="stylesheet" href="/CSS/design.css">
   <link rel="stylesheet" href="/CSS/responsive.css">
   <link rel='stylesheet' href='/CSS/logout.css' >
+  <!-- Boxicons Icon Library -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
   <title>Gordon College - Dashboard</title>
 </head>
@@ -33,42 +33,45 @@
     <ul class="sidebar__menu sidebar__menu--main">
 
       <!-- User Profile -->
-      <li class="sidebar__item ">
+      <li class="sidebar__item sidebar__item">
         <a href="/structure.html" class="sidebar__link">
           <i class='bx bxs-user-rectangle'></i>
           <span class="sidebar__text">PROFILE</span>
         </a>
       </li>
-                   <!-- Dashboard -->
-      <li class="sidebar__item sidebar__item">
-        <a href="/statistic-faculty.html" class="sidebar__link">
+    
+               <!-- Dashboard -->
+      <li class="sidebar__item sidebar__item--active account">
+        <a href="#" class="sidebar__link">
           <i class='bx bxs-user-rectangle'></i>
           <span class="sidebar__text">DASHBOARD</span>
         </a>
       </li>
+      
       <!-- Borrower Management -->
-      <li class="sidebar__item ">
-        <a href="/borrow-dashboard.html" class="sidebar__link">
-          <i class='bx bxs-receipt '></i>
+      <li class="sidebar__item borrower-button ">
+        <a href="/borrow-dashboard.html" class="sidebar__link ">
+          <i class='bx bxs-receipt'></i>
           <span class="sidebar__text">BORROWER</span>
         </a>
       </li>
       <!-- Report and Request System -->
-      <li class="sidebar__item sidebar__item--active">
-        <a href="#" class="sidebar__link">
+      <li class="sidebar__item">
+        <a href="/report-dashboard-faculty.html" class="sidebar__link">
           <i class='bx bxs-copy-alt'></i>
           <span class="sidebar__text">REPORT / REQUEST</span>
         </a>
       </li>
-    
-      <!-- Request Status Monitor -->
-      <li class="sidebar__item">
+     
+      <!-- Request Status Monitor -->      <li class="sidebar__item">
         <a href="/request-status-dashboard-faculty.html" class="sidebar__link">
           <i class='bx bxs-group'></i>
           <span class="sidebar__text">REQUEST STATUS</span>
         </a>
       </li>
-         <li class="sidebar__item ">
+      
+      <!-- User Management (Admin Only) -->
+     <li class="sidebar__item ">
         <a href="borrow-status-faculty-iverson.html" class="sidebar__link">
           <i class='bx bxs-group'></i>
           <span class="sidebar__text">BORROW STATUS</span>
@@ -91,7 +94,7 @@
 
 
 <!-- ===================================
-     MAIN CONTENT AREA
+     UPPER BAR NAVIGATION
      =================================== -->
 <main class="main" id="content">
   <!-- Top Navigation Bar -->
@@ -103,33 +106,31 @@
       <!-- Dashboard Link -->
       <a href="#" class="navbar__link"></a>
     </div>
-      <!-- Dark/Light Mode Toggle -->
-      <input  id="theme-switch" hidden>
   </nav>
   <!-- End of Top Navigation Bar -->
 
-  <!-- Main Content Container -->
-  <div class="dashboard">
-    <h1 class="avlbl-item-text">REPORT
-    </h1>
-      <div class="available-item">
-      
 
-        </div>
-  </div>
+    <!-- ===================================
+      Main Content Container
+     =================================== -->
+  <section class="dashboard">
+
+  </section>
+  
 </main>
+
 <!-- End of MAIN CONTENT AREA -->
 
 <!-- JavaScript - Core Functionality -->
-<script type="module" src="/backend/report-dashboard-faculty.js"></script><!-- have a html structure of logout -->
-<script type="module" src="/backend/reportForm.js"></script>
-<script type="module" src="/backend/data/apiReportItem.js"></script>
 <script src="/backend/backend.js"></script>
 <script src="/backend/logout.js"></script>
 
-<script type="module" src="./ADMIN/backend/data/reportItem-admin-iverson.js"></script>
-<script type="module" src="/backend/firebase-config.js"></script>
+<!-- Firebase google fetching -->
+<script type="module" src="/backend/update.js"></script>
 
+<!-- Firebase JS -->
+<!-- <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script> -->
+<!-- <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script> -->
 </body>
 
 </html>
