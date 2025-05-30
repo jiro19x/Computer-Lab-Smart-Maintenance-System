@@ -110,11 +110,10 @@ function attachModalAndActionListeners() {
   document.querySelectorAll('.td-name-clickable').forEach(cell => {
     cell.addEventListener('click', async () => {
       const row = cell.closest('.report-row');
-      const { fullName,date,returnDate,borrowDate, product, img, status,purpose } = row.dataset;
-      console.log(row.dataset.img)
-const imageSrc = img ? img : 'https://firebasestorage.googleapis.com/v0/b/labsystem-481dc.firebasestorage.app/o/icon%2FnoImage.png?alt=media&token=a6517e64-7d82-4959-b7a9-96b20651864d';
-
-     
+      const { fullName, date, returnDate, borrowDate, product, img, status, purpose, id } = row.dataset;
+      const imageSrc = img
+        ? img
+        : 'https://firebasestorage.googleapis.com/v0/b/labsystem-481dc.firebasestorage.app/o/icon%2FnoImage.png?alt=media&token=a6517e64-7d82-4959-b7a9-96b20651864d';
 
       let modal = document.querySelector('.details-modal');
 
@@ -123,63 +122,80 @@ const imageSrc = img ? img : 'https://firebasestorage.googleapis.com/v0/b/labsys
         modal.classList.add('details-modal');
         document.body.appendChild(modal);
       }
-      modal.innerHTML = `
 
-         <div class="details-modal-content">
-  <div class="details-modal-header">
-    <h3 class="details-modal-title">Report Details</h3>
-    <button class="details-modal-close">&times;</button>
-  </div>
-  <div class="details-modal-body">
-    <div class="details-wrapper">
-      <div class="details-left">
-      
-        <div class="detail-row">
-          <span class="detail-label">Name:</span>
-          <span class="detail-value">${fullName} </span>
+      // Fetch remarks from Firestore
+      let remarks = '';
+      try {
+        const reportRef = doc(db, "borrowList", id);
+        const reportSnap = await getDoc(reportRef);
+        if (reportSnap.exists()) {
+          remarks = reportSnap.data().remarks || ''; // Get remarks if available
+        }
+      } catch (err) {
+        console.error("❌ Failed to fetch remarks:", err);
+      }
+
+      // Display remarks or fallback to purpose
+      modal.innerHTML = `
+        <div class="details-modal-content">
+          <div class="details-modal-header">
+            <h3 class="details-modal-title">Report Details</h3>
+            <button class="details-modal-close">&times;</button>
+          </div>
+          <div class="details-modal-body">
+            <div class="details-wrapper">
+              <div class="details-left">
+                <div class="detail-row">
+                  <span class="detail-label">Name:</span>
+                  <span class="detail-value">${fullName}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Status:</span>
+                  <span class="detail-value">${status}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Equipment:</span>
+                  <span class="detail-value">${product}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Date Submitted:</span>
+                  <span class="detail-value">${date}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Borrow Date:</span>
+                  <span class="detail-value">${new Date(borrowDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                  })}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Return Date:</span>
+                  <span class="detail-value">${new Date(returnDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                  })}</span>
+                </div>
+                ${
+                  remarks
+                    ? `<div class="detail-row">
+                        <span class="detail-label">Remarks:</span>
+                        <span class="detail-value">${remarks}</span>
+                      </div>`
+                    : `<div class="detail-row">
+                        <span class="detail-label">Purpose:</span>
+                        <span class="detail-value">${purpose}</span>
+                      </div>`
+                }
+              </div>
+              <div class="details-right">
+                <img src="${imageSrc}" alt="Report Image" class="report-image" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="detail-row">
-          <span class="detail-label">Status:</span>
-          <span class="detail-value">${status}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Equipment:</span>
-          <span class="detail-value">${product}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Date Submitted:</span>
-          <span class="detail-value">${date}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Borrow Date:</span>
-          <span class="detail-value">${new Date(borrowDate).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        })}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Return Date:</span>
-          <span class="detail-value">${new Date(returnDate).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        })}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Purpose:</span>
-          <span class="detail-value">${purpose}</span>
-        </div>
-      </div>
-      <div class="details-right">
-        <img src="${imageSrc}" alt="Report Image" class="report-image" />
-        
-      </div>
-    </div>
-  </div>
-</div>
       `;
-      document.body.appendChild(modal);
 
       modal.classList.add('active');
 

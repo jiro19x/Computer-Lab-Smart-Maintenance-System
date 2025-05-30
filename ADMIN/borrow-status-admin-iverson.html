@@ -10,6 +10,7 @@
   <link rel='stylesheet' href='/CSS/logout.css'>
   <link rel="stylesheet" href="/CSS/request-status.css">
   <link rel="stylesheet" href="../ADMIN/CSS/view-report.css">
+  <link rel="stylesheet" href="../ADMIN/CSS/confirmationModal.css">
   <!-- Boxicons Icon Library borrow-dashboard-admin-iverson.css -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/CSS/borrow-dashboard.css">
@@ -132,7 +133,7 @@
             <option value="pending-sort">Pending</option>
             <option value="approve-sort">Approved</option>
             <option value="return-sort">Return</option>
-            <option value="decline-sort">Declined</option>
+            <option value="remove-sort">Removed</option> <!-- Updated from Declined -->
           </select>
 
           <div class="request-date-inputs">
@@ -176,7 +177,6 @@
 <script src="/backend/logout.js"></script>
 <script type="module" src="/ADMIN/backend/adminFirewall.js"></script>
 
-<script type="module" src="/ADMIN/backend/data/reportItem-admin-iverson.js"></script> 
 
 
 

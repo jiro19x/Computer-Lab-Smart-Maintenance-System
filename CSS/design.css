@@ -788,7 +788,7 @@ body.dark .empty-state__hint {
     color:white;
 }
 
-.decline-btn-js {
+.remove-btn-js {
     /*background: rgba(219, 80, 74, 0.2);
     color: var(--color-danger);
     */
@@ -804,7 +804,7 @@ body.dark .empty-state__hint {
 .Approved{
   color:rgb(41, 168, 41)
 }
-.Declined{
+.Removed{
   color:rgb(221, 24, 24)
 }
 .Returned{
