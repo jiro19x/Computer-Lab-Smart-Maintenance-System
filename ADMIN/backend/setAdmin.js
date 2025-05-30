@@ -8,7 +8,9 @@ admin.initializeApp({
 // List all UIDs you want to make admins
 const adminUIDs = [
   "jrnPPTpwfhYBGWiY4ajgkfXVzjC2",
-  "gnbkWWkOiuSMs4Bi0wKBOdBjjCW2"
+  "gnbkWWkOiuSMs4Bi0wKBOdBjjCW2",
+  "RwqBnjs6fsflxNaOyCUsgo7wMan2",
+  "1VHZ1dZwGfhlg1cfcgt52Saw5e52"
 ];
 
 async function setAdmins() {
