@@ -7,7 +7,7 @@
   <!-- External CSS Stylesheet -->
   <link rel="stylesheet" href="/CSS/design.css">
   <link rel="stylesheet" href="/CSS/responsive.css">
-  <link rel='stylesheet' href='/CSS/logout.css' >
+  <link rel='stylesheet' href='/CSS/logout.css'>
   <!-- Boxicons Icon Library -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -21,17 +21,17 @@
 
 <body>
 
-<!-- ===================================
+  <!-- ===================================
      SIDEBAR NAVIGATION
      =================================== -->
   <aside class="sidebar" id="sidebar">
-	
+
     <!-- College Logo and Title -->
     <a href="#" class="sidebar__brand">
-        <img src="/asset/image/CCS-CCSLOGO.png" alt="Gordon College Logo" class="sidebar__logo">
-        <span class="sidebar__title">L A B G U A R D</span>
+      <img src="/icons/logo-image.png" alt="Gordon College Logo" class="sidebar__logo">
+      <span class="sidebar__title">L A B G U A R D</span>
     </a>
-    
+
     <!-- Main Navigation Menu -->
     <ul class="sidebar__menu sidebar__menu--main">
 
@@ -40,6 +40,13 @@
         <a href="#" class="sidebar__link">
           <i class='bx bxs-user-rectangle'></i>
           <span class="sidebar__text">PROFILE</span>
+        </a>
+      </li>
+      <!-- Dashboard -->
+      <li class="sidebar__item sidebar__item">
+        <a href="statistic-admin.html" class="sidebar__link">
+          <i class='bx bxs-user-rectangle'></i>
+          <span class="sidebar__text">DASHBOARD</span>
         </a>
       </li>
       <!-- Borrower Management -->
@@ -63,13 +70,14 @@
           <span class="sidebar__text">REPAIR PROGRESS</span>
         </a>
       </li>
-      <!-- Request Status Monitor -->      <li class="sidebar__item">
+      <!-- Request Status Monitor -->
+      <li class="sidebar__item">
         <a href="request-status-dashboard-faculty-admin-iverson.html" class="sidebar__link">
           <i class='bx bxs-group'></i>
           <span class="sidebar__text">REQUEST STATUS</span>
         </a>
       </li>
-      
+
       <li class="sidebar__item ">
         <a href="borrow-status-admin-iverson.html" class="sidebar__link">
           <i class='bx bxs-group'></i>
@@ -89,76 +97,78 @@
     </ul>
 
   </aside>
-<!-- End of SIDEBAR NAVIGATION -->
+  <!-- End of SIDEBAR NAVIGATION -->
 
-
-<!-- ===================================
-     UPPER BAR NAVIGATION
-     =================================== -->
-<main class="main" id="content">
-  <!-- Top Navigation Bar -->
-  <nav class="navbar">
-    <!-- Left Side of Navigation -->
-    <div class="navbar__left">
-      <!-- Menu Toggle Button -->
-      <i class='bx bx-menu navbar__toggle'></i>
-      <!-- Dashboard Link -->
-      <a href="#" class="navbar__link">Dashboard</a>
-    </div>
-  </nav>
-  <!-- End of Top Navigation Bar -->
 
   <!-- ===================================
+     UPPER BAR NAVIGATION
+     =================================== -->
+  <main class="main" id="content">
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <!-- Left Side of Navigation -->
+      <div class="navbar__left">
+        <!-- Menu Toggle Button -->
+        <i class='bx bx-menu navbar__toggle'></i>
+        <!-- Dashboard Link -->
+        <a href="#" class="navbar__link"></a>
+      </div>
+    </nav>
+    <!-- End of Top Navigation Bar -->
+
+    <!-- ===================================
       Main Content Container
      =================================== -->
-  <section class="profile-section">
-    <div class="profile-header">
-      <div class="profile-avatar" style="display: flex; justify-content: center; align-items: center; width: 100%; background: none; box-shadow: none;">
-      <img id="userProfilePicture" style="max-width:120px; border-radius:50%; display: block; margin: 0 auto; background: none; box-shadow: none;"><br>
+    <section class="profile-section">
+      <div class="profile-header">
+        <div class="profile-avatar"
+          style="display: flex; justify-content: center; align-items: center; width: 100%; background: none; box-shadow: none;">
+          <img id="userProfilePicture"
+            style="max-width:120px; border-radius:50%; display: block; margin: 0 auto; background: none; box-shadow: none;"><br>
+        </div>
+        <div class="profile-info">
+          <div class="profile-role">ADMIN</div>
+          <div class="profile-name" id="userName"></div>
+          <h2 style="font-size:20px ;" id="userEmail"></h2> <!--addedd a style size-->
+        </div>
       </div>
-      <div class="profile-info">
-        <div class="profile-role">ADMIN</div>
-        <div class="profile-name" id="userName"></div>
-        <h2 style="font-size:20px ;"id="userEmail"></h2> <!--addedd a style size-->
-      </div>    
-    </div>
 
-     <!-- Mobile logout button - now functional with the same logout behavior as sidebar button -->
-  <div class="container">
-    <div class="mobile-logout logout-button" id="mobile-logout">
-      <a href="#" class="mobile-logout__link">
-        <i class='bx bxs-log-out-circle'></i>
-        <span>Logout</span>
-      </a>
-    </div>
-  </div>
+      <!-- Mobile logout button - now functional with the same logout behavior as sidebar button -->
+      <div class="container">
+        <div class="mobile-logout logout-button" id="mobile-logout">
+          <a href="#" class="mobile-logout__link">
+            <i class='bx bxs-log-out-circle'></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
 
 
-    <div class="dark-mode-container">
-      <span class="dark-mode-label"><i class='bx bx-moon'></i>Dark Mode</span>
-      <label class="switch">
-        <input type="checkbox" id="theme-switch">
-        <span class="slider round"></span>
-      </label>
-    </div>
+      <div class="dark-mode-container">
+        <span class="dark-mode-label"><i class='bx bx-moon'></i>Dark Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="theme-switch">
+          <span class="slider round"></span>
+        </label>
+      </div>
 
-  </section>
+    </section>
 
-</main>
-<!-- End of MAIN CONTENT AREA -->
+  </main>
+  <!-- End of MAIN CONTENT AREA -->
 
-<!-- JavaScript - Core Functionality -->
-<script src="/backend/backend.js"></script>
-<script src="/backend/logout.js"></script>
+  <!-- JavaScript - Core Functionality -->
+  <script src="/backend/backend.js"></script>
+  <script src="/backend/logout.js"></script>
 
-<!-- Firebase google fetching -->
-<script type="module" src="/backend/update.js"></script>
+  <!-- Firebase google fetching -->
+  <script type="module" src="/backend/update.js"></script>
 
 
-<!-- Firebase JS -->
-<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-<script type="module" src="/ADMIN/backend/adminFirewall.js"></script>
+  <!-- Firebase JS -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script type="module" src="/ADMIN/backend/adminFirewall.js"></script>
 </body>
 
 </html>
