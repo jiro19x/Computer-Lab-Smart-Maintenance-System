@@ -68,11 +68,9 @@ function renderRequestStatus() {
         month: 'long',
         day: 'numeric'
       });
-      
-
-      reportSummary += `
+          reportSummary += `
        <tr class="report-row"
-            data-id="${data.id}"
+            data-id="${doc.id}"
           data-date="${formattedDate}"
           data-status="${status}"
           data-borrow-date="${data.borrowDate}"
@@ -80,6 +78,7 @@ function renderRequestStatus() {
           data-product="${data.equipment}"
           data-img="${data.downloadURL || ''}"
           data-purpose="${data.purpose || 'No details provided'}"
+          data-remarks="${data.remarks || data.remark || ''}"
           data-full-name="${data.fullName || 'Unknown'}">
           <td data-label="Faculty Name">${data.fullName || 'Unknown'}</td>
           <td data-label="Request Date">${formattedDate}</td>
@@ -110,7 +109,7 @@ function attachModalAndActionListeners() {
   document.querySelectorAll('.td-name-clickable').forEach(cell => {
     cell.addEventListener('click', async () => {
       const row = cell.closest('.report-row');
-      const { fullName, date, returnDate, borrowDate, product, img, status, purpose, id } = row.dataset;
+      const { fullName, date, returnDate, borrowDate, product, img, status, purpose, id, remarks: rowRemarks } = row.dataset;
       const imageSrc = img
         ? img
         : 'https://firebasestorage.googleapis.com/v0/b/labsystem-481dc.firebasestorage.app/o/icon%2FnoImage.png?alt=media&token=a6517e64-7d82-4959-b7a9-96b20651864d';
@@ -121,15 +120,18 @@ function attachModalAndActionListeners() {
         modal = document.createElement('div');
         modal.classList.add('details-modal');
         document.body.appendChild(modal);
-      }
-
-      // Fetch remarks from Firestore
-      let remarks = '';
+      }      // Fetch remarks from Firestore
+      let remarks = rowRemarks || ''; // Start with remarks from row data
       try {
         const reportRef = doc(db, "borrowList", id);
         const reportSnap = await getDoc(reportRef);
         if (reportSnap.exists()) {
-          remarks = reportSnap.data().remarks || ''; // Get remarks if available
+          const docData = reportSnap.data();
+          remarks = docData.remarks || docData.remark || remarks; // Use fetched remarks if available
+          console.log('Document data:', docData);
+          console.log('Remarks found:', remarks);
+        } else {
+          console.log('Document does not exist with ID:', id);
         }
       } catch (err) {
         console.error("❌ Failed to fetch remarks:", err);

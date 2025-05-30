@@ -69,10 +69,8 @@ function renderRequestStatus() {
             data-location="${data.room} - ${data.pc}"
             data-product="${data.equipment}"
             data-img="${data.imageUrl || ''}"
-            data-issue="${data.issue || 'No details provided'}"
-            data-position="${data.position || 'Faculty'}"
-            data-remarks="${data.remarks || ''}" <!-- Include remarks -->
-            data-purpose="${data.purpose || ''}"> <!-- Include purpose -->
+            data-issue="${data.issue || 'No details provided'}"            data-position="${data.position || 'Faculty'}"
+            data-remarks="${data.remarks || ''}"> <!-- Include remarks -->
           <td data-label="Faculty Name">${data.fullName || 'Unknown'}</td>
           <td data-label="date">${formattedDate}</td>
           <td data-label="Room & PC No.">${data.room} - ${data.pc}</td>
